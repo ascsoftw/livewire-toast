@@ -1,0 +1,28 @@
+{
+    "name": "ascsoftw/livewire-toast",
+    "description": "Livewire Package to display Toast Notifications",
+    "license": "MIT",
+    "keywords": ["Laravel", "LivewireToast", "Toast", "Notifications", "Livewire"],
+    "authors": [
+        {
+            "name": "AscSoftwares",
+            "email": "support@ascsoftwares.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ascsoftw\\LivewireToast\\" : "src/"
+        }
+    },
+    "require-dev": {
+        "livewire/livewire": "^2.4",
+        "orchestra/testbench": "^6.17"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ascsoftw\\LivewireToast\\LivewireToastServiceProvider"
+            ]
+        }
+    }
+}
