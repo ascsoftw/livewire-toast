@@ -1,9 +1,17 @@
 # livewire-toast
-Livewire Package to display Toast Notification.
+Livewire Package to display Toast Notification based on TALL Stack.
+
+<p align="center">
+  <img src="https://media.giphy.com/media/P1aEuZq9kSok2RIfJC/giphy.gif">
+</p>
 
 ## Requirements
 
 Make sure that [Livewire](https://laravel-livewire.com/) is installed properly on your project.
+
+Make sure that [TailwindCSS](https://tailwindcss.com/) is installed properly on your project.
+
+Make sure that [AlpineJS](https://github.com/alpinejs/alpine/) is installed properly on your project.
 
 ## Installation
 
@@ -28,11 +36,26 @@ $this->emitTo('livewire-toast', 'show', ['type' => 'warning', 'message' => 'This
 
 ```
 
+*Using Session Flash*
+
+```php
+session()->flash('livewire-toast', 'Project Added Successfully');
+session()->flash('livewire-toast', ['type' => 'error', 'message' => 'There was an Error!']);
+
+```
+
 *From Livewire View*
 ```php
 $emitTo('livewire-toast', 'show', 'Project Added Successfully'); //Will show Success Message
 $emitTo('livewire-toast', 'showError', 'There was an Error!'); //Will show error. showError, showWarning, showInfo, showSuccess are supported
 $emitTo('livewire-toast', 'show', {'type' : 'warning', 'message' : 'This is warning!'}); //Can also pass type and message as object
+```
+
+*From JS*
+```js
+Livewire.emitTo('livewire-toast', 'show', 'Project Added Successfully'); //Will show Success Message
+Livewire.emitTo('livewire-toast', 'showError', 'There was an Error!'); //Will show error. showError, showWarning, showInfo, showSuccess are supported
+Livewire.emitTo('livewire-toast', 'show', {'type' : 'warning', 'message' : 'This is warning!'}); //Can also pass type and message as object
 ```
 
 

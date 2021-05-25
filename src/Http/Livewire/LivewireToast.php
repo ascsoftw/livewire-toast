@@ -20,12 +20,19 @@ class LivewireToast extends Component
 
     protected $transitions = [
         'rotate' => ['rotate-180', 'rotate'],
-        'zoom_in' => ['scale-50', 'scal-100'],
+        'zoom_in' => ['scale-50', 'scale-100'],
         'appear_from_right' => ['translate-x-1/2', 'translate-x-0'],
         'appear_from_left' => ['-translate-x-1/2', 'translate-x-0'],
         'appear_from_below' => ['translate-y-1/2', 'translate-y-0'],
         'appear_from_above' => ['-translate-y-1/2', 'translate-y-0'],
     ];
+
+    public function mount()
+    {
+        if($message = session('livewire-toast')) {
+            $this->show($message);
+        }
+    }
 
     public function show($params)
     {

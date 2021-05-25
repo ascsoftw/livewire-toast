@@ -1,6 +1,10 @@
 <div class="fixed {{$positionCss}} @if($hideOnClick) cursor-pointer @endif"
     x-data="{show: false, timeout: null, duration: null}"
-    @new-toast.window="duration = @this.duration; clearTimeout(timeout); show = true; 
+    @if($message)
+        x-init="() => { duration = @this.duration; clearTimeout(timeout); show = true;
+                if( duration > 0 ) {timeout = setTimeout(() => { show = false }, duration); }}"
+    @endif
+    @new-toast.window="duration = @this.duration; clearTimeout(timeout); show = true;
                 if( duration > 0 ) { timeout = setTimeout(() => { show = false }, duration); }"
     @click="if(@this.hideOnClick) { show = false; }"
     x-show="show"
