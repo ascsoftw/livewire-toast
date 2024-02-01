@@ -29,13 +29,7 @@ class LivewireToast extends Component
 
     public function mount()
     {
-        if($message = session('livewire-toast')) {
-            $this->show($message);
-        }
-    }
-
-    public function show($params)
-    {
+        $this->_setType();
         $this->_setDuration();
         $this->_setBackgroundColor();
         $this->_setTextColor();
@@ -44,16 +38,29 @@ class LivewireToast extends Component
         $this->_setClickHandler();
         $this->_setTransition();
 
+        if($message = session('livewire-toast')) {
+            $this->show($message);
+        }
+    }
+
+    public function show($params)
+    {
+        $this->_setDuration();
         $type = '';
         if (is_array($params)) {
+            info('toast', $params);
             $this->message = $params['message'] ?? '';
             $type = $params['type'] ?? '';
             $this->duration = $params['duration'] ?? $this->duration;
         } else {
             $this->message = $params;
         }
-        $this->_setType($type);       
-        
+        $this->_setType($type);
+
+        $this->_setBackgroundColor();
+        $this->_setTextColor();
+        $this->_setIcon();
+
         if (!empty($this->message)) {
             $this->dispatch('new-toast');
         }
