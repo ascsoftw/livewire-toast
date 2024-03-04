@@ -48,7 +48,6 @@ class LivewireToast extends Component
         $this->_setDuration();
         $type = '';
         if (is_array($params)) {
-            info('toast', $params);
             $this->message = $params['message'] ?? '';
             $type = $params['type'] ?? '';
             $this->duration = $params['duration'] ?? $this->duration;
